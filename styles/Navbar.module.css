@@ -1,0 +1,25 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 50px;
+  padding: 1rem;
+}
+
+.navbarContainer {
+  display: flex;
+}
+
+.navbarHeaderTitle {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbarLeft {
+  width: 30px;
+}
+
+.navbarRight {
+  width: 30px;
+}
