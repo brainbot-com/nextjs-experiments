@@ -7,3 +7,5 @@ export type Product = {
   category: string
   measurement: Measurement
 }
+
+export type ProductInCard = Product & { amount: number }

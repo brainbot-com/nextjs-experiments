@@ -5,12 +5,16 @@ import styles from '../styles/Home.module.css'
 import categories from '../data/categories.json'
 import products from '../data/products.json'
 import { Tabs, Tab } from '@wfp/ui'
-import { ProductCard } from './components/productCard'
 import { type Product } from '../types/products'
 import { type Category } from '../types/categories'
-import { Input, Search } from '@wfp/ui'
-import { ChangeEvent, useState } from 'react'
+import { Input, Search, TextInput } from '@wfp/ui'
+import { ChangeEvent, useContext, useState } from 'react'
 import { Products } from './components/products'
+import { Modal } from '@wfp/ui'
+import { useClientCheck } from '../hooks/clientCheck'
+import Link from 'next/link'
+import OrderContext from '../contexts/order'
+import { LastProductBlock } from './components/lastProductBlock'
 
 type groupedProducts = {
   [key: string]: Array<Product>
@@ -41,7 +45,12 @@ const filterAndGroupProducts = (
   return filtered
 }
 const Home: NextPage<Props> = ({ products, categories }: Props) => {
+  const isClient = useClientCheck()
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [order, setOrder] = useContext(OrderContext)
   const [filter, setFilter] = useState('')
+  const [open, setOpen] = useState(false)
+  const [amount, setAmount] = useState<null | number>(null)
   const [localProducts, setLocalProducts] = useState(
     filterAndGroupProducts(products, '')
   )
@@ -50,8 +59,39 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
     setLocalProducts(filterAndGroupProducts(products, String(title)))
   }
 
+  const submitAndClose = () => {
+    if (selectedProduct && amount) {
+      setOrder([
+        ...order,
+        {
+          ...selectedProduct,
+          amount: amount,
+        },
+      ])
+    }
+
+    setAmount(null)
+
+    toggleModal()
+  }
+
+  console.log('order', order)
+
+  const toggleModal = () => {
+    setOpen(!open)
+  }
+
   const onProductClick = (productId: string) => {
-    console.log('product clicked', productId)
+    const selected = products.find((product) => product.id === productId)
+    setSelectedProduct(selected || null)
+    toggleModal()
+  }
+
+  console.log('amout', amount)
+  const setAmountWithProtection = (amount: ChangeEvent<Input>): void => {
+    console.log('asfdaiojsafdioklj')
+    // @ts-ignore
+    setAmount(Number(String(amount.target.value)))
   }
 
   return (
@@ -108,6 +148,55 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
               )
             })}
           </Tabs>
+        )}
+
+        {isClient && (
+          <Modal
+            open={open}
+            primaryButtonText="Add"
+            onRequestSubmit={submitAndClose}
+            secondaryButtonText="Cancel"
+            // onSecondarySubmit={toggleModal}
+            onRequestClose={toggleModal}
+            primaryButtonDisabled={!amount}
+          >
+            {selectedProduct && (
+              <p className="wfp--modal-content__text">
+                {selectedProduct.title}
+                {selectedProduct.price}
+                <TextInput
+                  name="amount"
+                  value={amount ? amount : ''}
+                  onChange={setAmountWithProtection}
+                  placeholder={
+                    selectedProduct.measurement === 'weight'
+                      ? 'Enter kg'
+                      : 'Enter length'
+                  }
+                />
+              </p>
+            )}
+          </Modal>
+        )}
+
+        {!!order.length && (
+          <div className={'footerAbsoluteContainer'}>
+            <div className={styles.lastProductBlock}>
+              <div>
+                <strong>Last product</strong>
+              </div>
+              <LastProductBlock
+                product={order[order.length - 1]}
+                onDelete={() => {
+                  setOrder(order.slice(0, -1))
+                }}
+              />
+            </div>
+
+            <Link href={'checkout'}>
+              <a className={'wfp--btn wfp--btn--primary'}>Checkout</a>
+            </Link>
+          </div>
         )}
       </div>
     </div>
