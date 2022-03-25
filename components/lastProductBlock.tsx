@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import styles from '../../styles/lastProductBlock.module.css'
-import grain from '../../public/grain.jpg'
-import { ProductInCard } from '../../types/products'
-import { currencyName } from '../../constants'
+import styles from '../styles/lastProductBlock.module.css'
+import grain from '../public/grain.jpg'
+import { ProductInCard } from '../types/products'
+import { currencyName } from '../constants'
 import { Button } from '@wfp/ui'
 import { iconClose } from '@wfp/icons'
 

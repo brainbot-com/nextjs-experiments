@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import Layout from './components/layout'
+import Layout from '../components/layout'
 // Import all stylesheets
 import '@wfp/ui/src/globals/scss/styles.scss'
 import { OrderProvider } from '../contexts/order'

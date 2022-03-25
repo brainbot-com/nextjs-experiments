@@ -9,12 +9,12 @@ import { type Product } from '../types/products'
 import { type Category } from '../types/categories'
 import { Input, Search, TextInput } from '@wfp/ui'
 import { ChangeEvent, useContext, useState } from 'react'
-import { Products } from './components/products'
+import { Products } from '../components/products'
 import { Modal } from '@wfp/ui'
 import { useClientCheck } from '../hooks/clientCheck'
 import Link from 'next/link'
 import OrderContext from '../contexts/order'
-import { LastProductBlock } from './components/lastProductBlock'
+import { LastProductBlock } from '../components/lastProductBlock'
 
 type groupedProducts = {
   [key: string]: Array<Product>

@@ -1,4 +1,4 @@
-import styles from '../../styles/Navbar.module.css'
+import styles from '../styles/Navbar.module.css'
 import { Icon } from '@wfp/ui'
 import colors from '@wfp/ui/src/globals/data/colors.json'
 import { iconHeaderHamburger } from '@wfp/icons'

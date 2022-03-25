@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import styles from '../../styles/ProductCard.module.css'
-import grain from '../../public/grain.jpg'
-import { type Product } from '../../types/products'
+import styles from '../styles/ProductCard.module.css'
+import grain from '../public/grain.jpg'
+import { type Product } from '../types/products'
 
 type Props = {
   product: Product

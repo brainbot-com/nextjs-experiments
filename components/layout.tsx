@@ -1,5 +1,5 @@
 import Navbar from './navbar'
-import styles from '../../styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 
 type Props = {
   children: JSX.Element
