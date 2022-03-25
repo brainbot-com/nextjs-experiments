@@ -5,7 +5,7 @@ import { type Product } from '../../types/products'
 
 type Props = {
   product: Product
-  onClick: (productId: string) => {}
+  onClick: (productId: string) => void
 }
 export const ProductCard = ({ product, onClick }: Props) => {
   return (

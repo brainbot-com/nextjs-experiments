@@ -11,3 +11,7 @@
 .tabContainer {
   /*display: flex;*/
 }
+
+.marginTop {
+  margin-top: 1rem;
+}
