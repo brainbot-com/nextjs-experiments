@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import styles from '../styles/ProductCard.module.css'
-import grain from '../public/grain.jpg'
+import grain from '../public/images/grain.jpg'
 import { type Product } from '../types/products'
 
 type Props = {
@@ -16,7 +16,7 @@ export const ProductCard = ({ product, onClick }: Props) => {
         itemType="http://schema.org/Product"
       >
         <div className={styles.imageContainer}>
-          <Image
+          <ExportedImage
             alt={`food image ${product.title}`}
             src={grain}
             width={120}

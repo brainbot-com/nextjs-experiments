@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import styles from '../styles/lastProductBlock.module.css'
-import grain from '../public/grain.jpg'
+import grain from '../public/images/grain.jpg'
 import { ProductInCard } from '../types/products'
 import { currencyName } from '../constants'
 import { Button } from '@wfp/ui'
@@ -18,7 +18,7 @@ export const LastProductBlock = ({ product, onDelete }: Props) => {
       itemType="http://schema.org/Product"
     >
       <div className={styles.imageContainer}>
-        <Image
+        <ExportedImage
           alt={`food image ${product.title}`}
           src={grain}
           width={60}
@@ -38,9 +38,13 @@ export const LastProductBlock = ({ product, onDelete }: Props) => {
         </div>
 
         <div>
-          <Button icon={iconClose} kind="tertiary" onClick={() => {
-            onDelete(product.id)
-          }}></Button>
+          <Button
+            icon={iconClose}
+            kind="tertiary"
+            onClick={() => {
+              onDelete(product.id)
+            }}
+          ></Button>
         </div>
       </div>
     </article>
