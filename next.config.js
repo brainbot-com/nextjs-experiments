@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -14,6 +16,8 @@ const nextConfig = {
   env: {
     storePicturesInWEBP: true,
   },
+
+  assetPrefix: isProd ? '/nextjs-experiments/' : ''
 }
 
 module.exports = nextConfig
