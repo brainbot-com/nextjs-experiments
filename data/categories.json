@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cat1",
+    "title": "Vegetables"
+  },
+  {
+    "id": "cat2",
+    "title": "Fruits"
+  },
+  {
+    "id": "cat3",
+    "title": "Grains"
+  },
+  {
+    "id": "cat4",
+    "title": "Meat"
+  },
+  {
+    "id": "cat5",
+    "title": "Fish"
+  },
+  {
+    "id": "cat6",
+    "title": "Diary"
+  }
+]

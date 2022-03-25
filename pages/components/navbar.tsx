@@ -6,26 +6,20 @@ export default function Navbar() {
   return (
     <>
       <div className={`${styles.navbar} wfp--main-navigation`}>
-          <div className={styles.navbarContainer}>
-              <div className={styles.navbarLeft}>
-                  <Icon
-                      icon={iconHeaderHamburger}
-                      fill={colors['text-04'].hex}
-                      description={'Menu with additional options'}
-                  />
-              </div>
-
-
-              <div className={styles.navbarHeaderTitle}>
-                  New Order
-              </div>
-              <div className={styles.navbarRight}>
-
-              </div>
+        <div className={styles.navbarContainer}>
+          <div className={styles.navbarLeft}>
+            <Icon
+              icon={iconHeaderHamburger}
+              fill={colors['text-04'].hex}
+              description={'Menu with additional options'}
+            />
           </div>
 
-
-
+          <div className={styles.navbarHeaderTitle}>
+            <h1>New Order</h1>
+          </div>
+          <div className={styles.navbarRight}></div>
+        </div>
       </div>
     </>
   )

@@ -16,6 +16,9 @@
   justify-content: center;
 }
 
+.navbarHeaderTitle h1 {
+  font-size: 1.2rem;
+}
 .navbarLeft {
   width: 30px;
 }
