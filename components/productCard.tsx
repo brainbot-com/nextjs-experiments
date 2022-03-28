@@ -1,7 +1,7 @@
 import ExportedImage from 'next-image-export-optimizer'
 import styles from '../styles/ProductCard.module.css'
 import grain from '../public/images/grain.jpg'
-import { type Product } from '../types/products'
+import type { Product } from '../types/products'
 import { currencyName } from '../constants'
 
 type Props = {
