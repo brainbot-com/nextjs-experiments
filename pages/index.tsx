@@ -15,6 +15,7 @@ import { useClientCheck } from '../hooks/clientCheck'
 import Link from 'next/link'
 import OrderContext from '../contexts/order'
 import { LastProductBlock } from '../components/lastProductBlock'
+import Layout from '../components/layout'
 
 type groupedProducts = {
   [key: string]: Array<Product>
@@ -95,111 +96,118 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
   }
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Order</title>
-        <meta name="description" content="Order page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout title={'New Order'}>
+      <div className={styles.container}>
+        <Head>
+          <title>Order</title>
+          <meta name="description" content="Order page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <div>
-        <Search
-          id={'search-product'}
-          className="search-product"
-          name="search-product"
-          placeholder="Search product"
-          onChange={filterProducts}
-          value={filter}
-        />
+        <div>
+          <Search
+            id={'search-product'}
+            className="search-product"
+            name="search-product"
+            placeholder="Search product"
+            onChange={filterProducts}
+            value={filter}
+          />
 
-        {filter ? (
-          <div className={styles.marginTop}>
-            {categories.map((category) => {
-              return (
-                <Products
-                  key={`product-per-cat-${category.id}`}
-                  products={localProducts[category.id] || []}
-                  onProductClick={onProductClick}
-                />
-              )
-            })}
-          </div>
-        ) : (
-          <Tabs>
-            {categories.map((category) => {
-              return (
-                <Tab
-                  tabIndex={0}
-                  href={'#'}
-                  selected={false}
-                  role="tab"
-                  label={category.title}
-                  id={category.id}
-                  key={`category-${category.id}`}
-                >
-                  <div className={styles.tabContainer}>
-                    <Products
-                      key={`product-per-cat-${category.id}`}
-                      products={localProducts[category.id] || []}
-                      onProductClick={onProductClick}
-                    />
-                  </div>
-                </Tab>
-              )
-            })}
-          </Tabs>
-        )}
-
-        {isClient && (
-          <Modal
-            open={open}
-            primaryButtonText="Add"
-            onRequestSubmit={submitAndClose}
-            secondaryButtonText="Cancel"
-            // onSecondarySubmit={toggleModal}
-            onRequestClose={toggleModal}
-            primaryButtonDisabled={!amount}
-          >
-            {selectedProduct && (
-              <p className="wfp--modal-content__text">
-                {selectedProduct.title}
-                {selectedProduct.price}
-                <TextInput
-                  name="amount"
-                  value={amount ? amount : ''}
-                  onChange={setAmountWithProtection}
-                  placeholder={
-                    selectedProduct.measurement === 'weight'
-                      ? 'Enter kg'
-                      : 'Enter length'
-                  }
-                />
-              </p>
-            )}
-          </Modal>
-        )}
-
-        {!!order.length && (
-          <div className={'footerAbsoluteContainer'}>
-            <div className={styles.lastProductBlock}>
-              <div>
-                <strong>Last product</strong>
-              </div>
-              <LastProductBlock
-                product={order[order.length - 1]}
-                onDelete={() => {
-                  setOrder(order.slice(0, -1))
-                }}
-              />
+          {filter ? (
+            <div className={styles.marginTop}>
+              {categories.map((category) => {
+                return (
+                  <Products
+                    key={`product-per-cat-${category.id}`}
+                    products={localProducts[category.id] || []}
+                    onProductClick={onProductClick}
+                  />
+                )
+              })}
             </div>
+          ) : (
+            <Tabs>
+              {categories.map((category) => {
+                return (
+                  <Tab
+                    tabIndex={0}
+                    href={'#'}
+                    selected={false}
+                    role="tab"
+                    label={category.title}
+                    id={category.id}
+                    key={`category-${category.id}`}
+                  >
+                    <div className={styles.tabContainer}>
+                      <Products
+                        key={`product-per-cat-${category.id}`}
+                        products={localProducts[category.id] || []}
+                        onProductClick={onProductClick}
+                      />
+                    </div>
+                  </Tab>
+                )
+              })}
+            </Tabs>
+          )}
 
-            <Link href={'checkout'}>
-              <a className={'wfp--btn wfp--btn--primary'}>Checkout</a>
-            </Link>
-          </div>
-        )}
+          {isClient && (
+            <Modal
+              open={open}
+              primaryButtonText="Add"
+              onRequestSubmit={submitAndClose}
+              secondaryButtonText="Cancel"
+              // onSecondarySubmit={toggleModal}
+              onRequestClose={toggleModal}
+              primaryButtonDisabled={!amount}
+            >
+              {selectedProduct && (
+                <p className="wfp--modal-content__text">
+                  {selectedProduct.title}
+                  {selectedProduct.price}
+                  <TextInput
+                    name="amount"
+                    value={amount ? amount : ''}
+                    onChange={setAmountWithProtection}
+                    placeholder={
+                      selectedProduct.measurement === 'weight'
+                        ? 'Enter kg'
+                        : 'Enter length'
+                    }
+                  />
+                </p>
+              )}
+            </Modal>
+          )}
+
+          {!!order.length && (
+            <div className={'footerAbsoluteContainer'}>
+              <div className={styles.lastProductBlock}>
+                <div>
+                  <strong>Last product</strong>
+                </div>
+                <LastProductBlock
+                  product={order[order.length - 1]}
+                  onDelete={() => {
+                    setOrder(order.slice(0, -1))
+                  }}
+                />
+              </div>
+
+              <Link href={'checkout'}>
+                <a
+                  className={'wfp--btn wfp--btn--primary'}
+                  data-cy={'checkout-button'}
+                >
+                  Checkout
+                </a>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

@@ -16,6 +16,7 @@ export const LastProductBlock = ({ product, onDelete }: Props) => {
       className={styles.productItem}
       itemScope
       itemType="http://schema.org/Product"
+      data-cy={"last-product"}
     >
       <div className={styles.imageContainer}>
         <ExportedImage

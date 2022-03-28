@@ -9,7 +9,7 @@ type Props = {
 }
 export const ProductCard = ({ product, onClick }: Props) => {
   return (
-    <a onClick={() => onClick(product.id)} title={'Add to order'}>
+    <a onClick={() => onClick(product.id)} title={'Add to order'} data-cy={"product-card"}>
       <article
         className={styles.productItem}
         itemScope
@@ -26,7 +26,7 @@ export const ProductCard = ({ product, onClick }: Props) => {
         </div>
 
         <div className={styles.productMeta}>
-          <h2 itemProp="name">{product.title}</h2>
+          <h2 itemProp="name" data-cy={"product-title"}>{product.title}</h2>
           <p>
             <data value={product.price}>{product.price}</data>$
           </p>

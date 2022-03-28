@@ -8,9 +8,7 @@ import { OrderProvider } from '../contexts/order'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <OrderProvider>
-      <Layout>
         <Component {...pageProps} />
-      </Layout>
     </OrderProvider>
   )
 }
