@@ -1,13 +1,14 @@
+const withPWA = require('next-pwa')
 const isProd = process.env.NODE_ENV === 'production'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: "custom",
+    loader: 'custom',
     nextImageExportOptimizer: {
-      imageFolderPath: "public/images",
-      exportFolderPath: "out",
+      imageFolderPath: 'public/images',
+      exportFolderPath: 'out',
       imageSizes: [16, 32, 48, 64, 96, 120, 128, 256, 384],
       deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       quality: 75,
@@ -17,7 +18,14 @@ const nextConfig = {
     storePicturesInWEBP: true,
   },
 
-  assetPrefix: isProd ? '/nextjs-experiments/' : ''
+  assetPrefix: isProd ? '/nextjs-experiments/' : '',
 }
 
-module.exports = nextConfig
+module.exports = withPWA({
+  ...nextConfig,
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+  },
+})
