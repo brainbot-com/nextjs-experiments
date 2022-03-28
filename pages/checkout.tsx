@@ -4,7 +4,7 @@ import styles from '../styles/Checkout.module.css'
 import { useContext } from 'react'
 import Link from 'next/link'
 import OrderContext from '../contexts/order'
-import { currencyName } from '../constants'
+import { currencyName, formatterUSD } from '../constants'
 import { Icon } from '@wfp/ui'
 import { iconVisibilityOn } from '@wfp/icons'
 import Layout from '../components/layout'
@@ -13,7 +13,7 @@ const Checkout: NextPage = () => {
   const [order] = useContext(OrderContext)
 
   return (
-    <Layout title={"Checkout"}>
+    <Layout title={'Checkout'}>
       <div className={styles.container}>
         <Head>
           <title>Checkout</title>
@@ -25,9 +25,14 @@ const Checkout: NextPage = () => {
           <div className={styles.productsContainer}>
             {order.map((product) => {
               return (
-                <div key={product.id} className={styles.productItem} data-cy={"checkout-product"}>
+                <div
+                  key={product.id}
+                  className={styles.productItem}
+                  data-cy={'checkout-product'}
+                >
                   <strong>{product.title}</strong> {product.amount}kg{' '}
-                  {product.amount * product.price} {currencyName}
+                  {formatterUSD.format(product.amount * product.price)}{' '}
+                  {currencyName}
                 </div>
               )
             })}
@@ -37,11 +42,14 @@ const Checkout: NextPage = () => {
             <div>
               <strong>Total:</strong>
               <strong>
-                {order
-                  .map((product) => product.price * product.price)
-                  .reduce((prev, curr) => {
-                    return curr + prev
-                  }, 0)}{' '}
+                {formatterUSD.format(
+                  order
+                    .map((product) => product.price * product.amount)
+                    .reduce((prev, curr) => {
+                      console.log('curr, prev', curr, prev)
+                      return curr + prev
+                    }, 0)
+                )}{' '}
                 {currencyName}
               </strong>
             </div>
