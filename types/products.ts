@@ -5,7 +5,8 @@ export type Product = {
   description: string
   price: number
   category: string
-  measurement: Measurement
+  measurement: Measurement,
+  images: string[]
 }
 
 export type ProductInCard = Product & { amount: number }

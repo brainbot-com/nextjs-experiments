@@ -1,6 +1,5 @@
 import ExportedImage from 'next-image-export-optimizer'
 import styles from '../styles/ProductCard.module.css'
-import grain from '../public/images/grain.jpg'
 import type { Product } from '../types/products'
 import { currencyName } from '../constants'
 
@@ -23,7 +22,7 @@ export const ProductCard = ({ product, onClick }: Props) => {
         <div className={styles.imageContainer}>
           <ExportedImage
             alt={`food image ${product.title}`}
-            src={grain}
+            src={product.images[0]}
             width={120}
             layout="fixed"
             height={85}

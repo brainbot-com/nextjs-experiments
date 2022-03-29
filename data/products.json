@@ -3,41 +3,56 @@
     "id": "1",
     "title": "Amaranth",
     "description": "",
-    "price": 0.5,
+    "price": 0.15,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/amaranth.jpg"
+    ]
   },
   {
     "id": "2",
     "title": "Barley",
     "description": "",
-    "price": 0.6,
+    "price": 0.16,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/barley.jpg"
+    ]
   },
   {
     "id": "3",
     "title": "Buckwheat",
     "description": "",
-    "price": 0.6,
+    "price": 0.1,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/buckwheat.jpg"
+    ]
   },
   {
     "id": "4",
     "title": "Bulgur",
     "description": "",
-    "price": 0.6,
+    "price": 0.2,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/bulgur.jpg"
+    ]
   },
   {
     "id": "5",
     "title": "Corn",
     "description": "",
-    "price": 0.6,
+    "price": 0.8,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/corn.jpg"
+    ]
   },
   {
     "id": "6",
@@ -45,30 +60,97 @@
     "description": "",
     "price": 0.6,
     "category": "cat3",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/rice.jpg"
+    ]
   },
   {
     "id": "7",
     "title": "Beans",
     "description": "",
-    "price": 0.6,
+    "price": 0.3,
     "category": "cat1",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/beans.jpg"
+    ]
   },
   {
     "id": "8",
     "title": "Lentils",
     "description": "",
-    "price": 0.6,
+    "price": 0.2,
     "category": "cat1",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/lentils.jpg"
+    ]
   },
   {
-    "id": "6",
+    "id": "9",
     "title": "Peas",
     "description": "",
-    "price": 0.6,
+    "price": 0.7,
     "category": "cat1",
-    "measurement": "weight"
+    "measurement": "weight",
+    "images": [
+      "images/peas.jpg"
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Apples",
+    "description": "",
+    "price": 0.2,
+    "category": "cat2",
+    "measurement": "weight",
+    "images": [
+      "images/apples.jpg"
+    ]
+  },
+  {
+    "id": "11",
+    "title": "Bananas",
+    "description": "",
+    "price": 0.1,
+    "category": "cat2",
+    "measurement": "weight",
+    "images": [
+      "images/bananas.jpg"
+    ]
+  },
+  {
+    "id": "12",
+    "title": "chicken",
+    "description": "",
+    "price": 0.3,
+    "category": "cat4",
+    "measurement": "weight",
+    "images": [
+      "images/chicken.jpg"
+    ]
+  },
+  {
+    "id": "13",
+    "title": "Fish",
+    "description": "",
+    "price": 0.5,
+    "category": "cat5",
+    "measurement": "weight",
+    "images": [
+      "images/fish.jpg"
+    ]
+  },
+  {
+    "id": "14",
+    "title": "Milk",
+    "description": "",
+    "price": 0.1,
+    "category": "cat6",
+    "measurement": "weight",
+    "images": [
+      "images/milk.jpg"
+    ]
   }
 ]
