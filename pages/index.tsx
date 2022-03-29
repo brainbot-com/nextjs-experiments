@@ -97,7 +97,6 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
         <Head>
           <title>Order</title>
           <meta name="description" content="Order page" />
-          <link rel="icon" href="/favicon.ico" />
         </Head>
 
         <div>
