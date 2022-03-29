@@ -4,7 +4,7 @@
   right: 0;
   height: 50px;
   padding: 1rem;
-  z-index: 999;
+  z-index: 998;
 }
 
 .navbarContainer {
@@ -21,9 +21,10 @@
   font-size: 1.2rem;
 }
 .navbarLeft {
-  width: 30px;
+  width: 50px;
+  margin: -0.5rem;
 }
 
 .navbarRight {
-  width: 30px;
+  width: 50px;
 }

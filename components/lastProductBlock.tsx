@@ -45,6 +45,7 @@ export const LastProductBlock = ({ product, onDelete }: Props) => {
             onClick={() => {
               onDelete(product.id)
             }}
+            data-cy={"delete-last-product"}
           ></Button>
         </div>
       </div>

@@ -26,7 +26,7 @@ describe('Mobile', () => {
     cy.get(".wfp--tabs__nav-item.wfp--tabs__nav-item--selected").contains("Vegetables")
     cy.get('#search-product').type('b')
 
-    cy.get('[data-cy=product-title]').should('have.length', 4)
+    cy.get('[data-cy=product-title]').should('have.length', 5)
 
     cy.get('#search-product').clear().type('beans')
 
@@ -66,5 +66,29 @@ describe('Mobile', () => {
 
     // user should now start from the beginning and the card should be empty
     cy.url().should('include', '/')
+  })
+
+  it('Should be able to delete product from order', () => {
+    cy.get('[data-cy=product-card]').first().click()
+
+    cy.get('.wfp--btn.wfp--btn--primary').should('be.disabled')
+    cy.get('.wfp--input.wfp--text-input').type('2')
+
+    cy.get('.wfp--btn.wfp--btn--primary').should('not.be.disabled')
+
+    cy.get('.wfp--btn.wfp--btn--primary').click()
+
+    cy.get('[data-cy=last-product]').should("be.visible")
+
+    cy.get('[data-cy=delete-last-product]').click()
+
+    cy.get('[data-cy=last-product]').should("not.exist")
+  })
+
+  it('Menu should open', () => {
+    cy.get('[data-cy=open-menu]').click()
+    cy.get('[data-cy=menu-container]').should("be.visible")
+    cy.get('[data-cy=open-menu]').click()
+    cy.get('[data-cy=menu-container]').should("not.be.visible")
   })
 })

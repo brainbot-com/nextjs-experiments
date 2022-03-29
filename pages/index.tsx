@@ -76,8 +76,6 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
     toggleModal()
   }
 
-  console.log('order', order)
-
   const toggleModal = () => {
     setOpen(!open)
   }
@@ -88,9 +86,7 @@ const Home: NextPage<Props> = ({ products, categories }: Props) => {
     toggleModal()
   }
 
-  console.log('amout', amount)
   const setAmountWithProtection = (amount: ChangeEvent<Input>): void => {
-    console.log('asfdaiojsafdioklj')
     // @ts-ignore
     setAmount(Number(String(amount.target.value)))
   }
