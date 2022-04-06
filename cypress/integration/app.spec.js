@@ -8,6 +8,7 @@ describe('Mobile', () => {
 
   it('should be on frontpage', () => {
     // The frontpage should have a title "New Order"
+    cy.url().should('include', '/')
     cy.get('h1').contains('New Order')
   })
 
