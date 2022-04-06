@@ -22,6 +22,9 @@ export const Menu = () => {
           <ListItem>
             <Link href={'#'}>Statistics</Link>
           </ListItem>
+          <ListItem>
+            <Link href={'https://www.brainbot.com/imprint.html'}>Impressum</Link>
+          </ListItem>
         </List>
       </div>
     </div>
